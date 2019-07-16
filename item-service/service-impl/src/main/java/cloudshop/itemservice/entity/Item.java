@@ -1,5 +1,8 @@
 package cloudshop.itemservice.entity;
 
+import javax.json.bind.annotation.JsonbNumberFormat;
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbPropertyOrder;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="items")
+@JsonbPropertyOrder({"id", "name", "description", "price"})
 public class Item {
 
     @Id
@@ -41,6 +45,7 @@ public class Item {
         this.description = description;
     }
 
+    @JsonbNumberFormat("0.00")
     public double getPrice() {
         return price;
     }
